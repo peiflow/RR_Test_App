@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SecondaryActivity"
+        android:background="@color/cardview_dark_background">
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  android:layout_margin="25dp">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal" android:layout_marginBottom="15dp">
+            <TextView android:layout_width="90dp" android:layout_height="wrap_content"
+                      android:text="@string/event_details_name" android:textColor="@color/White"
+                      android:id="@+id/textView2"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/EventTxt"
+                    app:layout_constraintTop_toTopOf="parent"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal" android:layout_marginBottom="15dp">
+            <TextView android:layout_width="90dp" android:layout_height="wrap_content"
+                      android:text="@string/event_details_description" android:textColor="@color/White"
+                      android:id="@+id/textView3"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/DescTxt"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal" android:layout_marginBottom="15dp">
+            <TextView android:layout_width="90dp" android:layout_height="wrap_content"
+                      android:text="@string/event_details_date" android:textColor="@color/White"
+                      android:id="@+id/textView4"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/DateTxt"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal" android:layout_marginBottom="15dp">
+            <TextView android:layout_width="90dp" android:layout_height="wrap_content"
+                      android:text="@string/event_details_time" android:textColor="@color/White"
+                      android:id="@+id/textView5"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/TimeTxt"/>
+
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal" android:layout_marginBottom="15dp">
+
+            <TextView android:layout_width="90dp" android:layout_height="wrap_content"
+                      android:text="@string/event_details_location" android:textColor="@color/White"
+                      android:id="@+id/textView11" android:layout_gravity="center_vertical"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/LocationTxt"/>
+
+        </LinearLayout>
+
+        <com.google.android.gms.maps.MapView android:id="@+id/EventDetailsMap"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="wrap_content"
+                                             android:layout_gravity="center_horizontal">
+
+        </com.google.android.gms.maps.MapView>
+
+
+    </LinearLayout>
+</ScrollView>
