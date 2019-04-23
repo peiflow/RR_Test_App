@@ -13,6 +13,6 @@ class EventDetailsActivity : AppCompatActivity() {
         val btnId = intent.getIntExtra("BTN_ID",0)
 
         var eventTxt: TextView = findViewById(R.id.EventTxt)
-        eventTxt.text = "Button pressed: $btnId"
+        eventTxt.text = "Button pressed: $btnId" 
     }
 }
