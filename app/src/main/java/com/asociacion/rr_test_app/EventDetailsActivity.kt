@@ -4,15 +4,15 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 
-class SecondaryActivity : AppCompatActivity() {
+class EventDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_secondary)
+        setContentView(R.layout.event_details_activity)
 
         val btnId = intent.getIntExtra("BTN_ID",0)
 
-        //var txt:TextView = findViewById(R.id.SecActTxt)
-        //txt.text = "Button pressed: $btnId"
+        var eventTxt: TextView = findViewById(R.id.EventTxt)
+        eventTxt.text = "Button pressed: $btnId"
     }
 }

@@ -3,7 +3,6 @@ package com.asociacion.rr_test_app
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
-import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
@@ -26,7 +25,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener {
-            val intent:Intent = Intent(this, SecondaryActivity::class.java)
+            val intent:Intent = Intent(this, EventDetailsActivity::class.java)
             startActivity(intent)
         }
 
@@ -116,7 +115,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     fun LoadIntent(id:Int)
     {
-        var intent = Intent(this, SecondaryActivity::class.java)
+        var intent = Intent(this, EventDetailsActivity::class.java)
         intent.putExtra("BTN_ID", id)
         startActivity(intent)
     }
