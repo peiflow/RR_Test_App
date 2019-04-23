@@ -18,7 +18,7 @@
             <TextView android:layout_width="90dp" android:layout_height="wrap_content"
                       android:text="@string/event_details_name" android:textColor="@color/White"
                       android:id="@+id/textView2"/>
-            <TextView
+            <TextView style="@style/ContentLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/EventTxt"
@@ -30,7 +30,7 @@
             <TextView android:layout_width="90dp" android:layout_height="wrap_content"
                       android:text="@string/event_details_description" android:textColor="@color/White"
                       android:id="@+id/textView3"/>
-            <TextView
+            <TextView style="@style/ContentLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/DescTxt"/>
@@ -41,7 +41,7 @@
             <TextView android:layout_width="90dp" android:layout_height="wrap_content"
                       android:text="@string/event_details_date" android:textColor="@color/White"
                       android:id="@+id/textView4"/>
-            <TextView
+            <TextView style="@style/ContentLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/DateTxt"/>
@@ -52,7 +52,7 @@
             <TextView android:layout_width="90dp" android:layout_height="wrap_content"
                       android:text="@string/event_details_time" android:textColor="@color/White"
                       android:id="@+id/textView5"/>
-            <TextView
+            <TextView style="@style/ContentLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/TimeTxt"/>
@@ -65,7 +65,7 @@
             <TextView android:layout_width="90dp" android:layout_height="wrap_content"
                       android:text="@string/event_details_location" android:textColor="@color/White"
                       android:id="@+id/textView11" android:layout_gravity="center_vertical"/>
-            <TextView
+            <TextView style="@style/ContentLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
