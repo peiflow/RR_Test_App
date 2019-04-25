@@ -13,21 +13,25 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.widget.ImageButton
 import android.widget.Toast
+import com.asociacion.rr_test_app.controller.DatabaseManager
+import com.asociacion.rr_test_app.model.Event
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    lateinit var dbm:DatabaseManager
+    lateinit var eventsList:MutableList<Event>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-
+/*
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener {
             val intent:Intent = Intent(this, EventDetailsActivity::class.java)
             startActivity(intent)
-        }
+        }*/
 
         SetOnClickListeners()
 
@@ -38,8 +42,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-
         navView.setNavigationItemSelectedListener(this)
+
+        dbm = DatabaseManager()
+        eventsList = mutableListOf()
+    }
+
+    override fun onStart()
+    {
+        super.onStart()
+        dbm.ReadDatabase(this, eventsList)
     }
 
     override fun onBackPressed() {
@@ -94,29 +106,32 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    fun SetOnClickListeners()
-    {
-        val imgBtn1:ImageButton = findViewById(R.id.imageView2)
-        imgBtn1.setOnClickListener{
-            Toast.makeText(this, "Button 1 pressed", Toast.LENGTH_LONG).show()
-            LoadIntent(1)
+    fun SetOnClickListeners() {
+        val imgBtn1: ImageButton = findViewById(R.id.imageView2)
+        imgBtn1.setOnClickListener {
+            if(eventsList.size>0)
+                LoadIntent(eventsList[0])
         }
-        val imgBtn2:ImageButton = findViewById(R.id.imageView3)
-        imgBtn2.setOnClickListener{
-            Toast.makeText(this, "Button 2 pressed", Toast.LENGTH_LONG).show()
-            LoadIntent(2)
+        val imgBtn2: ImageButton = findViewById(R.id.imageView3)
+        imgBtn2.setOnClickListener {
+            if(eventsList.size>0)
+                LoadIntent(eventsList[1])
         }
-        val imgBtn3:ImageButton = findViewById(R.id.imageView4)
-        imgBtn3.setOnClickListener{
-            Toast.makeText(this, "Button 3 pressed", Toast.LENGTH_LONG).show()
-            LoadIntent(3)
+        val imgBtn3: ImageButton = findViewById(R.id.imageView4)
+        imgBtn3.setOnClickListener {
+        }
+        val imgBtn4: ImageButton = findViewById(R.id.imageButton)
+        imgBtn4.setOnClickListener {
+            dbm.LoadDatabase(this)
+        }
+        val imgBtn5: ImageButton = findViewById(R.id.imageButton2)
+        imgBtn5.setOnClickListener {
         }
     }
 
-    fun LoadIntent(id:Int)
-    {
+    fun LoadIntent(evt:Event) {
         var intent = Intent(this, EventDetailsActivity::class.java)
-        intent.putExtra("BTN_ID", id)
+        intent.putExtra("Event", evt)
         startActivity(intent)
     }
 }

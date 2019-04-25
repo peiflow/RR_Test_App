@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "349959754399",
+    "firebase_url": "https://leafy-caster-238617.firebaseio.com",
+    "project_id": "leafy-caster-238617",
+    "storage_bucket": "leafy-caster-238617.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349959754399:android:f4b418d3dd728ada",
+        "android_client_info": {
+          "package_name": "com.asociacion.rr_test_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "349959754399-g5m8tvg4vk2vfk79sgd24p7sb2enmevp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.asociacion.rr_test_app",
+            "certificate_hash": "b620516c1bc9e3c034c8f10f228718d2b14295f0"
+          }
+        },
+        {
+          "client_id": "349959754399-hvb3553449k1k0vg0vfrim2m5e7nkb7v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCD6_sLT1rrFg0j7lP2Nvoml0iN6c77Ew8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "349959754399-hvb3553449k1k0vg0vfrim2m5e7nkb7v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

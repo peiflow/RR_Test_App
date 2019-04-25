@@ -5,4 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="secActColor">#CDDC39</color>
     <color name="White">#FFFFFF</color>
+    <color name="TitleBarColor">#181617</color>
+    <color name="TextLabel">#FF6F22</color>
+    <color name="ContentLabel">#faf9ee</color>
 </resources>
