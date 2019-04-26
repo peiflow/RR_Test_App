@@ -14,9 +14,9 @@ class DatabaseManager {
     var dbRef: DatabaseReference
 
     constructor() {
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
+        //FirebaseDatabase.getInstance().setPersistenceEnabled(true)
         dbRef = FirebaseDatabase.getInstance().getReference("events")
-        dbRef.onDisconnect().setValue("Disconected")
+        //dbRef.onDisconnect().setValue("Disconected")
     }
 
     fun ReadDatabase(context: Context, eventsList:MutableList<Event>) {
