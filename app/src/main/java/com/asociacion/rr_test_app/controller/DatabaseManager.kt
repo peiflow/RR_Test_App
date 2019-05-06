@@ -40,7 +40,8 @@ class DatabaseManager {
         dbRef!!.addValueEventListener(eventsListener)
     }
 
-    fun LoadDatabase(context: Context) {
+    fun PopEventCollection(context: Context) {
+        dbRef.onDisconnect().setValue("")
         var key = dbRef.push().key
         val event: Event
         if (key != null) {
@@ -49,6 +50,7 @@ class DatabaseManager {
                 "Ruta sabado",
                 "Ruta del sábado por la mañana a Tiedra",
                 "41.521052, -5.393818",
+                "Plaza mayor",
                 "27/07/2019 11:00:00"
             )
             dbRef.child(key).setValue(event)
@@ -60,13 +62,14 @@ class DatabaseManager {
         if (key != null) {
             event2 = Event(
                 key,
-                "Ruta domingo",
-                "Ruta del domingo por la mañana a Venialbo",
-                "41.389676, -5.532914",
-                "27/07/2019 11:00:00"
+                "Exhibición trial",
+                "Exhibición de trial",
+                "41.527033, -5.397596",
+                "N-122",
+                "27/07/2019 19:00:00"
             )
             dbRef.child(key).setValue(event2)
-            Toast.makeText(context, "Event saved in db", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "DB reset", Toast.LENGTH_LONG).show()
         }
     }
 }

@@ -8,15 +8,17 @@ class Event : Serializable
     var name: String? = null
     var description: String? = null
     var location: String? = null
+    var address: String? = null
     var  dateTime: String? = null
 
     constructor(){}
 
-    constructor(uuid: String, name: String, description:String, location:String, dateTime:String){
+    constructor(uuid: String, name: String, description:String, location:String, address:String ,dateTime:String){
         this.uuid = uuid
         this.name = name
         this.description = description
         this.location= location
+        this.address = address
         this.dateTime= dateTime
     }
 }

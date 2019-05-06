@@ -1,6 +1,8 @@
 package com.asociacion.rr_test_app
 
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.view.GravityCompat
@@ -8,6 +10,8 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import android.support.v4.widget.DrawerLayout
 import android.support.design.widget.NavigationView
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
@@ -15,11 +19,15 @@ import android.widget.ImageButton
 import android.widget.Toast
 import com.asociacion.rr_test_app.controller.DatabaseManager
 import com.asociacion.rr_test_app.model.Event
+import com.google.android.gms.vision.barcode.Barcode
+import java.util.jar.Manifest
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var dbm:DatabaseManager
     lateinit var eventsList:MutableList<Event>
+    var REQUEST_CODE:Int = 100
+    var PERMISSION_REQUEST:Int = 200
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +51,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
+
+        if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED)
+        {
+            val permissions:Array<String> = arrayOf(android.Manifest.permission.CAMERA)
+            ActivityCompat.requestPermissions(this,  permissions,PERMISSION_REQUEST)
+        }
 
         dbm = DatabaseManager()
         eventsList = mutableListOf()
@@ -84,6 +98,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.nav_home -> {
                 // Handle the camera action
+                var intent = Intent(this, ScanActivity::class.java)
+                startActivityForResult(intent, REQUEST_CODE)
             }
             R.id.nav_gallery -> {
 
@@ -92,7 +108,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             }
             R.id.nav_tools -> {
-
+                dbm.PopEventCollection(this)
             }
             R.id.nav_share -> {
 
@@ -106,26 +122,41 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if(requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK)
+        {
+            if(data!= null){
+                val barcode:Barcode = data.getParcelableExtra("barcode")
+                Toast.makeText(this, barcode.displayValue, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
     fun SetOnClickListeners() {
-        val imgBtn1: ImageButton = findViewById(R.id.imageView2)
+        val imgBtn1: ImageButton = findViewById(R.id.imbBtn1)
         imgBtn1.setOnClickListener {
             if(eventsList.size>0)
                 LoadIntent(eventsList[0])
         }
-        val imgBtn2: ImageButton = findViewById(R.id.imageView3)
+        val imgBtn2: ImageButton = findViewById(R.id.imbBtn2)
         imgBtn2.setOnClickListener {
-            if(eventsList.size>0)
+            if(eventsList.size>=1)
                 LoadIntent(eventsList[1])
         }
-        val imgBtn3: ImageButton = findViewById(R.id.imageView4)
+        val imgBtn3: ImageButton = findViewById(R.id.imbBtn3)
         imgBtn3.setOnClickListener {
+            if(eventsList.size>=2)
+                LoadIntent(eventsList[2])
         }
-        val imgBtn4: ImageButton = findViewById(R.id.imageButton)
+        val imgBtn4: ImageButton = findViewById(R.id.imbBtn4)
         imgBtn4.setOnClickListener {
-            dbm.LoadDatabase(this)
+            if(eventsList.size>=3)
+                LoadIntent(eventsList[3])
         }
-        val imgBtn5: ImageButton = findViewById(R.id.imageButton2)
+        val imgBtn5: ImageButton = findViewById(R.id.imbBtn5)
         imgBtn5.setOnClickListener {
+            if(eventsList.size>=4)
+                LoadIntent(eventsList[4])
         }
     }
 
@@ -134,4 +165,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         intent.putExtra("Event", evt)
         startActivity(intent)
     }
+
+
 }

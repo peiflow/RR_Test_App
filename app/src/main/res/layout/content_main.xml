@@ -17,17 +17,17 @@
         <!-- Left side -->
         <ImageButton
                 app:srcCompat="@mipmap/ic_launcher_round"
-                android:id="@+id/imageView2"
+                android:id="@+id/imbBtn1"
                 app:layout_constraintEnd_toStartOf="@+id/guideline" android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_width="0dp"
-                android:layout_height="200dp" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-                android:scaleType="fitCenter"/>
+                android:layout_height="200dp"
+                android:scaleType="fitCenter" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
         <ImageButton
                 android:layout_width="0dp"
                 android:layout_height="200dp" app:srcCompat="@mipmap/ic_launcher_round"
-                android:id="@+id/imageView3"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" android:layout_marginTop="8dp"
+                android:id="@+id/imbBtn2"
+                app:layout_constraintTop_toBottomOf="@+id/imbBtn1" android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline" android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
@@ -35,8 +35,8 @@
         <ImageButton
                 android:layout_width="0dp"
                 android:layout_height="200dp" app:srcCompat="@mipmap/ic_launcher_round"
-                android:id="@+id/imageView4"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3"
+                android:id="@+id/imbBtn3"
+                app:layout_constraintTop_toBottomOf="@+id/imbBtn2"
                 app:layout_constraintEnd_toStartOf="@+id/guideline" android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
@@ -45,7 +45,7 @@
         <ImageButton
                 android:layout_width="0dp"
                 android:layout_height="200dp" app:srcCompat="@android:drawable/btn_star_big_on"
-                android:id="@+id/imageButton"
+                android:id="@+id/imbBtn4"
                 app:layout_constraintStart_toStartOf="@+id/guideline" android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
@@ -54,23 +54,23 @@
         <ImageButton
                 android:layout_width="0dp"
                 android:layout_height="200dp" app:srcCompat="@android:drawable/btn_star_big_on"
-                android:id="@+id/imageButton2"
+                android:id="@+id/imbBtn5"
                 app:layout_constraintStart_toStartOf="@+id/guideline" android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:scaleType="fitCenter"
                 app:layout_constraintHorizontal_bias="0.0"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/imageButton"/>
+                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/imbBtn4"/>
         <ImageButton
                 android:layout_width="0dp"
                 android:layout_height="200dp" app:srcCompat="@android:drawable/btn_star_big_on"
-                android:id="@+id/imageButton3"
+                android:id="@+id/imbBtn6"
                 app:layout_constraintStart_toStartOf="@+id/guideline" android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:scaleType="fitCenter"
                 app:layout_constraintHorizontal_bias="0.0"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/imageButton2"/>
+                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/imbBtn5"/>
 
         <!-- RightSide -->
     </android.support.constraint.ConstraintLayout>

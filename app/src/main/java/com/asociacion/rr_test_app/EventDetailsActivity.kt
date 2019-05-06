@@ -46,7 +46,7 @@ class EventDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
         descTxt.text = evt.description
         dateTxt.text = frmtDate
         timeTxt.text = frmtTime
-        locTxt.text = evt.location
+        locTxt.text = evt.address
 
         var spl = evt.location!!.split(",")
 
