@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ScanActivity">
+        tools:context=".RecyclerViewActivity" android:orientation="vertical" android:background="@color/background_color">
 
     <android.support.design.widget.AppBarLayout
+            android:id="@+id/content_recycler_view_app_bar"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:theme="@style/AppTheme.AppBarOverlay" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
 
         <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -20,7 +22,10 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
     </android.support.design.widget.AppBarLayout>
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/content_recycler_view_app_bar"
+                app:layout_constraintStart_toEndOf="@+id/content_recycler_view_app_bar">
+        <include layout="@layout/content_recycler_view"/>
+    </ScrollView>
 
-    <include layout="@layout/content_scan"/>
-
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

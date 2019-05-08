@@ -16,6 +16,9 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 
+    <string name="menu_qr">QR Reader</string>
+    <string name="menu_database">Load database</string>
+
     <!-- Event details -->
     <string name="event_details_name">Evento:</string>
     <string name="event_details_description">Descripción:</string>
@@ -24,7 +27,12 @@
     <string name="event_details_location">Lugar:</string>
     <string name="title_activity_event_location">EventLocation</string>
 
+
+    <string name="scan_activity_center_qr">Center QR code</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_scan">ScanActivity</string>
+    <string name="title_activity_recycler_view">RecyclerViewActivity</string>
 </resources>
