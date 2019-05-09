@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import com.asociacion.rr_test_app.model.Event
+import com.asociacion.rr_test_app.model.LatLng
 import com.google.firebase.database.*
 import com.google.firebase.database.DataSnapshot
 
@@ -40,11 +41,13 @@ class DatabaseManager {
     }
 
     fun PopEventCollection(context: Context) {
+
         dbRef.setValue(null)
         var key = dbRef.push().key
         val event: Event
         if (key != null) {
-            event = Event(
+
+            /*event = Event(
                 key,
                 "Ruta sabado",
                 "Ruta del sábado por la mañana a Tiedra",
@@ -52,7 +55,18 @@ class DatabaseManager {
                 "Plaza mayor",
                 "27/07/2019 11:00:00",
                 "https://image.shutterstock.com/image-vector/colorful-seamless-geometric-pattern-450w-161998277.jpg"
-            )
+            )*/
+
+            event = Event()
+            event.uuid = key
+            event.name = "Ruta sabado"
+            event.description = "Ruta del sábado por la mañana a Tiedra"
+            event.address =  "Plaza mayor"
+            event.location = mutableListOf(LatLng(41.521052,-5.393818),LatLng(41.650273,-5.269575))
+            event.dateTime = "27/07/2019 11:00:00"
+            event.imgUrl = "https://image.shutterstock.com/image-vector/colorful-seamless-geometric-pattern-450w-161998277.jpg"
+
+
             dbRef.child(key).setValue(event)
         }
 
@@ -63,7 +77,7 @@ class DatabaseManager {
                 key,
                 "Exhibición trial",
                 "Exhibición de trial",
-                "41.527033, -5.397596",
+                mutableListOf(LatLng(41.527033, -5.397596)),
                 "N-122",
                 "27/07/2019 19:00:00",
                 "https://image.shutterstock.com/image-vector/pixel-monsters-cartoon-vector-pattern-450w-584585053.jpg"
@@ -79,7 +93,7 @@ class DatabaseManager {
                     key,
                     "Concierto Xeria",
                     "Concierto de Xeria en la plaza mayor",
-                    "41.521052, -5.393818",
+                    mutableListOf(LatLng(41.521052, -5.393818)),
                     "Plaza Mayor",
                     "27/07/2019 00:00:00",
                     "https://image.shutterstock.com/image-vector/colorful-seamless-geometric-pattern-450w-161998277.jpg"

@@ -4,33 +4,26 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.support.v4.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
-import android.view.MenuItem
-import android.support.v4.widget.DrawerLayout
 import android.support.design.widget.NavigationView
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.support.v4.view.GravityCompat
+import android.support.v4.widget.DrawerLayout
+import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageButton
-import android.widget.LinearLayout
 import android.widget.Toast
 import com.asociacion.rr_test_app.controller.DatabaseManager
-import com.asociacion.rr_test_app.controller.RVAdapter
 import com.asociacion.rr_test_app.model.Event
 import com.google.android.gms.vision.barcode.Barcode
-import java.util.jar.Manifest
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var dbm: DatabaseManager
     lateinit var eventsList: MutableList<Event>
-    lateinit var rv:RecyclerView
     var REQUEST_CODE: Int = 100
     var PERMISSION_REQUEST: Int = 200
 
@@ -40,10 +33,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         SetOnClickListeners()
-
-        rv = findViewById(R.id.rv)
-        rv.setHasFixedSize(true)
-        rv.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -63,9 +52,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onStart() {
         super.onStart()
         dbm.ReadDatabase(this, eventsList)
-
-        val adapter = RVAdapter(eventsList)
-        rv.adapter = adapter
     }
 
     override fun onBackPressed() {
