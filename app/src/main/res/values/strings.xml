@@ -31,6 +31,7 @@
     <string name="event_details_time">Hora:</string>
     <string name="event_details_location">Lugar:</string>
     <string name="title_activity_event_location">EventLocation</string>
+    <string name="open_maps_button">Ver en Maps</string>
 
 
     <string name="scan_activity_center_qr">Center QR code</string>

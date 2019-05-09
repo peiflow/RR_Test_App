@@ -83,6 +83,12 @@
                   tools:context=".EventLocationActivity"
                   android:name="com.google.android.gms.maps.SupportMapFragment"
                   class="com.google.android.gms.maps.SupportMapFragment"/>
-
+        
+        <Button
+                android:id="@+id/open_maps_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/open_maps_button"
+        />
     </LinearLayout>
 </ScrollView>
