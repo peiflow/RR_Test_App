@@ -3,6 +3,7 @@ package com.asociacion.rr_test_app
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import android.webkit.URLUtil
 import android.widget.Toast
 import com.google.android.gms.vision.CameraSource
 import com.google.android.gms.vision.Detector
@@ -17,6 +19,7 @@ import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.barcode.BarcodeDetector
 
 import kotlinx.android.synthetic.main.activity_scan.*
+import kotlinx.android.synthetic.main.content_scan.*
 import java.io.IOException
 import java.lang.Exception
 import java.util.jar.Manifest
@@ -51,7 +54,11 @@ class ScanActivity : AppCompatActivity() {
         cameraView.holder.addCallback(object : SurfaceHolder.Callback {
             override fun surfaceCreated(holder: SurfaceHolder) {
                 try {
-                    if (ContextCompat.checkSelfPermission(this@ScanActivity, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                    if (ContextCompat.checkSelfPermission(
+                            this@ScanActivity,
+                            android.Manifest.permission.CAMERA
+                        ) == PackageManager.PERMISSION_GRANTED
+                    ) {
                         cameraSource.start(cameraView.holder)
                     }
                 } catch (e: IOException) {
@@ -77,13 +84,26 @@ class ScanActivity : AppCompatActivity() {
             override fun receiveDetections(detections: Detector.Detections<Barcode>) {
                 val barcodes = detections.detectedItems
                 if (barcodes.size() > 0) {
-                    val intent = Intent()
-                    intent.putExtra("barcode", barcodes.valueAt(0))
-                    setResult(Activity.RESULT_OK, intent)
-                    finish()
+                    val text = barcodes.valueAt(0).displayValue
+                    //val intent = Intent()
+                    //intent.putExtra("barcode", barcodes.valueAt(0))
+                    //textView7.text = barcodes.valueAt(0).displayValue
+                    //setBarcodeText(barcodes.valueAt(0).displayValue)
+                    //setResult(Activity.RESULT_OK, intent)
+                    //finish()
+                    runOnUiThread {
+                        Toast.makeText(this@ScanActivity, "QR Code read", Toast.LENGTH_LONG).show()
+
+                        if (!URLUtil.isValidUrl(text)) {
+                            textView7.text = text
+                        } else {
+                            val openUrl = Intent(Intent.ACTION_VIEW)
+                            openUrl.data = Uri.parse(text)
+                            startActivity(openUrl)
+                        }
+                    }
                 }
             }
         })
     }
-
 }

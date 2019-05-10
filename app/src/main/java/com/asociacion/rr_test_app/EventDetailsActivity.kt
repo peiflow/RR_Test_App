@@ -35,7 +35,7 @@ class EventDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         opnMapsBtn.setOnClickListener{
             val openUrl = Intent(Intent.ACTION_VIEW)
-            openUrl.data = Uri.parse("https://www.google.es/maps/dir/Toro+(Zamora),+Toro/47530+San+Román+de+Hornija,+Valladolid/Castronuño/La+Bóveda+de+Toro/Venialbo/@41.433834,-5.5421648,11z/data=!3m1!4b1!4m32!4m31!1m5!1m1!1s0xd38959c132a704f:0xa2b7a1b491bfb470!2m2!1d-5.3913375!2d41.5274417!1m5!1m1!1s0xd389620bacd852d:0x797ca0d3abb920fc!2m2!1d-5.2847709!2d41.480658!1m5!1m1!1s0xd38bb76f5686111:0x9bf614a77db387a6!2m2!1d-5.2671378!2d41.387238!1m5!1m1!1s0xd38c79765e54131:0xd2d704f21b666fe2!2m2!1d-5.4109725!2d41.3430855!1m5!1m1!1s0xd38c361b0eaff17:0x789cd4ef0164bb81!2m2!1d-5.5367936!2d41.3895764!3e0")
+            openUrl.data = Uri.parse(evt.routeUrl)
             startActivity(openUrl)
         }
     }
@@ -106,6 +106,6 @@ class EventDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
         timeTxt.text = frmtTime
         locTxt.text = evt.address
 
-        markers = evt.location!!
+        markers = evt.locations!!
     }
 }

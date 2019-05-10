@@ -24,9 +24,10 @@ class RecyclerViewActivity : AppCompatActivity() {
 
         var recyclerView:RecyclerView = findViewById(R.id.content_recycler_view_test)
         val linearLayout = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
-        val adapter = RVAdapter(events.toList()) { event: Event -> eventItemClicked(event)}
+        val adapter = RVAdapter(events.toList(), { event: Event -> eventItemClicked(event)})
+        //PartAdapter(testData, { partItem : PartData -> partItemClicked(partItem) })
 
-        recyclerView.layoutManager =linearLayout
+        recyclerView.layoutManager = linearLayout
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
     }

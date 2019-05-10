@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
         SetOnClickListeners()
 
+        CheckPermissions()
+
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val toggle = ActionBarDrawerToggle(
@@ -42,8 +44,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
-
-        CheckPermissions()
 
         dbm = DatabaseManager()
         eventsList = mutableListOf()
@@ -175,10 +175,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
         if (camPerm != PackageManager.PERMISSION_GRANTED
-            && gpsPerm != PackageManager.PERMISSION_GRANTED
-            && readStoragePerm != PackageManager.PERMISSION_GRANTED
-            && writeStoragePerm != PackageManager.PERMISSION_GRANTED
-            && internetPerm != PackageManager.PERMISSION_GRANTED
+            || gpsPerm != PackageManager.PERMISSION_GRANTED
+            || readStoragePerm != PackageManager.PERMISSION_GRANTED
+            || writeStoragePerm != PackageManager.PERMISSION_GRANTED
+            || internetPerm != PackageManager.PERMISSION_GRANTED
         ) {
             ActivityCompat.requestPermissions(this, permissions, PERMISSION_REQUEST)
         }
